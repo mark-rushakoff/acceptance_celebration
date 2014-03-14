@@ -26,14 +26,34 @@ def send_to_all_sockets(message)
   end
 end
 
-def notify_changes(changes)
+def notify_changes(changes, primary_resources, project_name)
   changes.each do |change|
     new_current_state = change.fetch('new_values', {}).fetch('current_state', nil)
+
+    resource = primary_resources.find {|r| r['id'] == change['id'] }
+    next if resource.nil?
+    p :change
+    p change
+    p :primary_resources
+    p primary_resources
+
+    story_url = resource['url']
+    story_name = resource['name']
+    result = {
+      storyLink: story_url,
+      storyText: "#{project_name}: #{story_name}",
+      newState: new_current_state,
+    }
+
     if new_current_state == 'accepted'
-      send_to_all_sockets(CASH_SOUND.dup)
+      result.merge!(sound: 'cash')
     elsif new_current_state == 'rejected'
-      send_to_all_sockets(BREAK_GLASS_SOUND.dup)
+      result.merge!(sound: 'break_glass')
+    else
+      return
     end
+
+    send_to_all_sockets(result.to_json)
   end
 end
 
@@ -61,7 +81,11 @@ post '/tracker' do
   kind = tracker_data['kind']
   halt(200, 'not a story update') unless kind == 'story_update_activity'
 
-  notify_changes(tracker_data.fetch('changes', []))
+  changes = tracker_data.fetch('changes', [])
+  primary_resources = tracker_data.fetch('primary_resources', [])
+  project_name = tracker_data.fetch('project', {})['name']
+
+  notify_changes(changes, primary_resources, project_name)
   'Thank you for the changes.'
 end
 

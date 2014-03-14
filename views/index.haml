@@ -11,11 +11,21 @@
       %span.label.label-danger NOT connected to server
     %audio{src: '/sounds/cash.wav', id: 'sound_cash'}
     %audio{src: '/sounds/break_glass.wav', id: 'sound_break_glass'}
+    .row
+      .col-md-4
+        %h2 Accepted Stories
+        #accepted.list-group
+      .col-md-4
+        %h2 Rejected Stories
+        #rejected.list-group
+      .col-md-4
   :javascript
     $(function() {
       var ws = new WebSocket('ws://' + window.location.host + window.location.pathname);
       var $connectedEl = $("#connected");
       var $disconnectedEl = $("#disconnected");
+      var $acceptedEl = $("#accepted");
+      var $rejectedEl = $("#rejected");
 
       ws.onopen = function() {
         console.log("websocket opened");
@@ -38,6 +48,18 @@
           $audio_el[0].play();
         } else {
           console.log("Warning: sound " + sound + " is unknown.");
+        }
+
+        var $storyLink = $('<a class="list-group-item"></a>');
+        $storyLink.text(hash.storyText);
+        $storyLink.attr("href", hash.storyLink);
+
+        if (hash.newState === "accepted") {
+          $storyLink.addClass("list-group-item-success");
+          $acceptedEl.append($storyLink);
+        } else {
+          $storyLink.addClass("list-group-item-danger");
+          $rejectedEl.append($storyLink);
         }
       }
     })
