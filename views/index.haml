@@ -1,0 +1,20 @@
+%html
+  %script{src: 'http://code.jquery.com/jquery-2.1.0.min.js'}
+  %body
+    %h1 Every time a story gets acceptance wings, a bell rings
+  :javascript
+    $(function() {
+      var ws = new WebSocket('ws://' + window.location.host + window.location.pathname);
+
+      ws.onopen = function() {
+        console.log("websocket opened");
+      };
+
+      ws.onclose = function() {
+        console.log("websocket closed");
+      };
+
+      ws.onmessage = function(message) {
+        console.log("Play sound: " + message.data);
+      }
+    })
