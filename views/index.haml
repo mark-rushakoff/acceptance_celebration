@@ -2,6 +2,7 @@
   %script{src: 'http://code.jquery.com/jquery-2.1.0.min.js'}
   %body
     %h1 Every time a story gets acceptance wings, a bell rings
+    %audio{src: '/sounds/cash.wav', id: 'sound_cash'}
   :javascript
     $(function() {
       var ws = new WebSocket('ws://' + window.location.host + window.location.pathname);
@@ -15,7 +16,14 @@
       };
 
       ws.onmessage = function(message) {
-        hash = JSON.parse(message.data);
-        console.log("Play sound: " + hash.sound);
+        var hash = JSON.parse(message.data);
+        var sound = hash.sound;
+        console.log("Play sound: " + sound);
+        var $audio_el = $("#sound_" + sound);
+        if ($audio_el.length) {
+          $audio_el[0].play();
+        } else {
+          console.log("Warning: sound " + sound + " is unknown.");
+        }
       }
     })
