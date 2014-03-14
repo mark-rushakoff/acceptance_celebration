@@ -56,7 +56,6 @@ end
 # try: curl -H "Content-Type: application/json" --data @fixtures/story_accepted.json http://localhost:4567/tracker
 # try: curl -H "Content-Type: application/json" --data @fixtures/story_rejected_with_comment.json http://localhost:4567/tracker
 post '/tracker' do
-  p :start
   tracker_data = JSON.parse(request.body.read)
 
   kind = tracker_data['kind']
