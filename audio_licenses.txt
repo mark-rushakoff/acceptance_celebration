@@ -1,1 +1,2 @@
 cash.wav: https://www.freesound.org/people/Zott820/sounds/209578/, CC0
+break_glass.wav: https://www.freesound.org/people/gevaroy/sounds/173560/, CC0

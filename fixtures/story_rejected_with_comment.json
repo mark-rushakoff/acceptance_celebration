@@ -1,0 +1,76 @@
+{
+  "project": {
+    "name": "Demo",
+    "kind": "project",
+    "id": 1037612
+  },
+  "occurred_at": 1394827391000,
+  "performed_by": {
+    "initials": "ṀṚ",
+    "name": "Mark Rushakoff",
+    "kind": "person",
+    "id": 465545
+  },
+  "project_version": 12,
+  "guid": "1037612_12",
+  "kind": "story_update_activity",
+  "primary_resources": [
+    {
+      "name": "Make me a story I can't accept",
+      "url": "http://www.pivotaltracker.com/story/show/67580988",
+      "kind": "story",
+      "story_type": "feature",
+      "id": 67580988
+    }
+  ],
+  "message": "Mark Rushakoff rejected this feature with comments: \"what is this i dont even\"",
+  "changes": [
+    {
+      "kind": "comment",
+      "change_type": "create",
+      "new_values": {
+        "created_at": 1394827391000,
+        "file_attachments": [
+
+        ],
+        "google_attachments": [
+
+        ],
+        "person_id": 465545,
+        "file_attachment_ids": [
+
+        ],
+        "story_id": 67580988,
+        "google_attachment_ids": [
+
+        ],
+        "text": "what is this i dont even",
+        "id": 64414988,
+        "updated_at": 1394827391000
+      },
+      "id": 64414988
+    },
+    {
+      "original_values": {
+        "current_state": "delivered",
+        "follower_ids": [
+
+        ],
+        "updated_at": 1394827381000
+      },
+      "name": "Make me a story I can't accept",
+      "kind": "story",
+      "story_type": "feature",
+      "change_type": "update",
+      "new_values": {
+        "current_state": "rejected",
+        "follower_ids": [
+          465545
+        ],
+        "updated_at": 1394827391000
+      },
+      "id": 67580988
+    }
+  ],
+  "highlight": "rejected"
+}

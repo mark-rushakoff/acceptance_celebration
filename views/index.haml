@@ -3,6 +3,7 @@
   %body
     %h1 Every time a story gets acceptance wings, a bell rings
     %audio{src: '/sounds/cash.wav', id: 'sound_cash'}
+    %audio{src: '/sounds/break_glass.wav', id: 'sound_break_glass'}
   :javascript
     $(function() {
       var ws = new WebSocket('ws://' + window.location.host + window.location.pathname);

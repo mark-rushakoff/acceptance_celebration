@@ -1,0 +1,47 @@
+{
+  "kind": "story_update_activity",
+  "project": {
+    "kind": "project",
+    "id": 1037612,
+    "name": "Demo"
+  },
+  "project_version": 7,
+  "message": "Mark Rushakoff accepted this feature",
+  "highlight": "accepted",
+  "performed_by": {
+    "kind": "person",
+    "id": 465545,
+    "name": "Mark Rushakoff",
+    "initials": "ṀṚ"
+  },
+  "changes": [
+    {
+      "new_values": {
+        "updated_at": 1394815866000,
+        "accepted_at": 1394815868000,
+        "current_state": "accepted"
+      },
+      "story_type": "feature",
+      "kind": "story",
+      "id": 67565824,
+      "original_values": {
+        "updated_at": 1394815864000,
+        "accepted_at": null,
+        "current_state": "delivered"
+      },
+      "change_type": "update",
+      "name": "Implement a frobble"
+    }
+  ],
+  "occurred_at": 1394815866000,
+  "guid": "1037612_7",
+  "primary_resources": [
+    {
+      "story_type": "feature",
+      "kind": "story",
+      "id": 67565824,
+      "name": "Implement a frobble",
+      "url": "http://www.pivotaltracker.com/story/show/67565824"
+    }
+  ]
+}
