@@ -32,10 +32,6 @@ def notify_changes(changes, primary_resources, project_name)
 
     resource = primary_resources.find {|r| r['id'] == change['id'] }
     next if resource.nil?
-    p :change
-    p change
-    p :primary_resources
-    p primary_resources
 
     story_url = resource['url']
     story_name = resource['name']
