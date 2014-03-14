@@ -15,6 +15,7 @@
       };
 
       ws.onmessage = function(message) {
-        console.log("Play sound: " + message.data);
+        hash = JSON.parse(message.data);
+        console.log("Play sound: " + hash.sound);
       }
     })

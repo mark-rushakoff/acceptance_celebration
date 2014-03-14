@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'sinatra-websocket'
 require 'haml'
+require 'json/pure'
 
 set :server, 'thin'
 set :sockets, []
@@ -34,7 +35,11 @@ end
 # try: curl -X POST --data "sound=bell" http://127.0.0.1:4567/debug
 post '/debug' do
   settings.sockets.each do |socket|
-    send_to_all_sockets("someone debugged: #{params[:sound]}")
+    hash = {
+      sound: params[:sound]
+    }.to_json
+
+    send_to_all_sockets(hash)
   end
 
   'Successfully debugged'

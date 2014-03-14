@@ -9,6 +9,7 @@ GEM
     eventmachine (1.0.3)
     haml (4.0.5)
       tilt
+    json_pure (1.8.0)
     rack (1.5.2)
     rack-protection (1.5.2)
       rack
@@ -31,5 +32,6 @@ PLATFORMS
 
 DEPENDENCIES
   haml
+  json_pure
   sinatra
   sinatra-websocket
