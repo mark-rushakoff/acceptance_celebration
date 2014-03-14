@@ -1,19 +1,32 @@
+!!! 5
 %html
-  %script{src: 'http://code.jquery.com/jquery-2.1.0.min.js'}
+  %head
+    %script{src: 'http://code.jquery.com/jquery-2.1.0.min.js'}
+    %link{href: '//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css', rel: 'stylesheet'}
   %body
     %h1 Every time a story gets acceptance wings, a bell rings
+    %h2#connected.hidden
+      %span.label.label-success Connected to server
+    %h2#disconnected
+      %span.label.label-danger NOT connected to server
     %audio{src: '/sounds/cash.wav', id: 'sound_cash'}
     %audio{src: '/sounds/break_glass.wav', id: 'sound_break_glass'}
   :javascript
     $(function() {
       var ws = new WebSocket('ws://' + window.location.host + window.location.pathname);
+      var $connectedEl = $("#connected");
+      var $disconnectedEl = $("#disconnected");
 
       ws.onopen = function() {
         console.log("websocket opened");
+        $connectedEl.removeClass("hidden");
+        $disconnectedEl.addClass("hidden");
       };
 
       ws.onclose = function() {
         console.log("websocket closed");
+        $connectedEl.addClass("hidden");
+        $disconnectedEl.removeClass("hidden");
       };
 
       ws.onmessage = function(message) {
